@@ -15,4 +15,16 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	// MySQL
+	implementation 'mysql:mysql-connector-java:5.1.6'
+
+	// PostgreSQL
+	implementation 'org.postgresql:postgresql:42.2.6'
+
+	// MariaDB
+	implementation 'org.mariadb.jdbc:mariadb-java-client:2.4.3'
+	
+	// MSSQL
+	implementation 'com.microsoft.sqlserver:mssql-jdbc:7.4.1.jre12'
 }
