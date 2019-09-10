@@ -1,12 +1,11 @@
 package ch.medusa.sqlapi.domain.model;
 
-import java.util.List;
+import org.springframework.web.multipart.MultipartFile;
 
-public class QueryRequest {
+public class ScriptRequest {
 
     private Credentials credentials;
-
-    private String sql;
+    private MultipartFile file;
 
     public Credentials getCredentials() {
         return credentials;
@@ -16,11 +15,11 @@ public class QueryRequest {
         this.credentials = credentials;
     }
 
-    public String getSql() {
-        return sql;
+    public MultipartFile getFile() {
+        return file;
     }
 
-    public void setSql(String sql) {
-        this.sql = sql;
+    public void setFile(MultipartFile file) {
+        this.file = file;
     }
 }
