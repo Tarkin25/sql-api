@@ -1,4 +1,4 @@
-package ch.medusa.sqlapi.domain.model;
+package ch.medusa.sqlapi.domain.driver;
 
 public class Driver {
 

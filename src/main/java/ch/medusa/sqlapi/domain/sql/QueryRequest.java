@@ -1,6 +1,6 @@
-package ch.medusa.sqlapi.domain.model;
+package ch.medusa.sqlapi.domain.sql;
 
-import java.util.List;
+import ch.medusa.sqlapi.domain.credentials.Credentials;
 
 public class QueryRequest {
 

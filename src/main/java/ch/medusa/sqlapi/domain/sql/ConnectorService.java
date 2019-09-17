@@ -1,6 +1,6 @@
-package ch.medusa.sqlapi.domain.service;
+package ch.medusa.sqlapi.domain.sql;
 
-import ch.medusa.sqlapi.domain.model.Credentials;
+import ch.medusa.sqlapi.domain.credentials.Credentials;
 import org.springframework.stereotype.Service;
 
 import java.sql.Connection;

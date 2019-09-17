@@ -1,22 +1,21 @@
-package ch.medusa.sqlapi.domain.service;
+package ch.medusa.sqlapi.domain.driver;
 
-import ch.medusa.sqlapi.domain.model.Driver;
-import ch.medusa.sqlapi.domain.repository.DriverRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class DriverService {
+public class DriverServiceImpl implements DriverService {
 
     private DriverRepository repository;
 
     @Autowired
-    public DriverService(DriverRepository repository) {
+    public DriverServiceImpl(DriverRepository repository) {
         this.repository = repository;
     }
 
+    @Override
     public List<Driver> findAll() {
         return repository.findAll();
     }

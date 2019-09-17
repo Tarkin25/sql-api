@@ -1,7 +1,5 @@
-package ch.medusa.sqlapi.domain.controller;
+package ch.medusa.sqlapi.domain.driver;
 
-import ch.medusa.sqlapi.domain.model.Driver;
-import ch.medusa.sqlapi.domain.service.DriverService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

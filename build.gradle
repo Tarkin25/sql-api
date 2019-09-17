@@ -27,4 +27,7 @@ dependencies {
 	
 	// MSSQL
 	implementation 'com.microsoft.sqlserver:mssql-jdbc:7.4.1.jre12'
+	
+	// SDJ
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 }

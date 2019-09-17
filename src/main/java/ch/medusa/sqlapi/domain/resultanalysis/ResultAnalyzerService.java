@@ -1,7 +1,5 @@
-package ch.medusa.sqlapi.domain.service;
+package ch.medusa.sqlapi.domain.resultanalysis;
 
-import ch.medusa.sqlapi.domain.model.resultanalysis.Column;
-import ch.medusa.sqlapi.domain.model.resultanalysis.Row;
 import org.springframework.stereotype.Service;
 
 import java.sql.ResultSet;
@@ -15,7 +13,7 @@ import java.util.Map;
 @Service
 public class ResultAnalyzerService {
 
-    public Object analyzeResultSet(ResultSet resultSet) throws SQLException {
+    public Map<String, Object> analyzeResultSet(ResultSet resultSet) throws SQLException {
         Map<String, Object> map = new LinkedHashMap<>();
 
         ResultSetMetaData resultSetMetaData = resultSet.getMetaData();

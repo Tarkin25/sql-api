@@ -1,5 +1,6 @@
-package ch.medusa.sqlapi.domain.model;
+package ch.medusa.sqlapi.domain.sql;
 
+import ch.medusa.sqlapi.domain.credentials.Credentials;
 import org.springframework.web.multipart.MultipartFile;
 
 public class ScriptRequest {

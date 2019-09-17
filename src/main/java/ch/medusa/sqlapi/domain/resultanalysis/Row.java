@@ -1,4 +1,4 @@
-package ch.medusa.sqlapi.domain.model.resultanalysis;
+package ch.medusa.sqlapi.domain.resultanalysis;
 
 import java.util.LinkedHashMap;
 

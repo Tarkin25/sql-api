@@ -1,6 +1,6 @@
 package ch.medusa.sqlapi;
 
-import ch.medusa.sqlapi.domain.service.ConnectorService;
+import ch.medusa.sqlapi.domain.sql.ConnectorService;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

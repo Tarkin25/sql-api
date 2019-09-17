@@ -1,15 +1,25 @@
-package ch.medusa.sqlapi.domain.model;
+package ch.medusa.sqlapi.domain.credentials;
 
 import ch.medusa.sqlapi.config.validation.Driver;
+import org.hibernate.annotations.GenericGenerator;
 
+import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+@Entity
+@Table(name = "credentials")
 public class Credentials {
+
+    @Id
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+    private String id;
 
     @Driver
     @NotNull
+    @Column(name = "database_management_system")
     private String databaseManagementSystem;
 
     @NotBlank
@@ -24,7 +34,16 @@ public class Credentials {
     @NotBlank
     private String password;
 
+    @Column(name = "database_name")
     private String database;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getDatabaseManagementSystem() {
         return databaseManagementSystem;

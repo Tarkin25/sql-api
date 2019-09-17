@@ -1,6 +1,5 @@
-package ch.medusa.sqlapi.domain.repository;
+package ch.medusa.sqlapi.domain.driver;
 
-import ch.medusa.sqlapi.domain.model.Driver;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
