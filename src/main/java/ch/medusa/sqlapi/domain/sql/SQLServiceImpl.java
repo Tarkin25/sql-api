@@ -1,7 +1,7 @@
 package ch.medusa.sqlapi.domain.sql;
 
-import ch.medusa.sqlapi.domain.credentials.Credentials;
-import ch.medusa.sqlapi.domain.credentials.CredentialsService;
+import ch.medusa.sqlapi.domain.dbsession.DBSession;
+import ch.medusa.sqlapi.domain.dbsession.DBSessionService;
 import ch.medusa.sqlapi.domain.resultanalysis.ResultAnalyzerService;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,21 +20,21 @@ public class SQLServiceImpl implements SQLService {
     private ConnectorService connectorService;
     private ResultAnalyzerService analyzerService;
     private Logger logger;
-    private CredentialsService credentialsService;
+    private DBSessionService DBSessionService;
 
     @Autowired
-    public SQLServiceImpl(ConnectorService connectorService, ResultAnalyzerService analyzerService, Logger logger, CredentialsService credentialsService) {
+    public SQLServiceImpl(ConnectorService connectorService, ResultAnalyzerService analyzerService, Logger logger, DBSessionService DBSessionService) {
         this.connectorService = connectorService;
         this.analyzerService = analyzerService;
         this.logger = logger;
-        this.credentialsService = credentialsService;
+        this.DBSessionService = DBSessionService;
     }
 
     @Override
     public Map<String, Object> executeQuery(String credentialsId, String sql) throws SQLException {
-        Credentials credentials = credentialsService.findById(credentialsId);
+        DBSession DBSession = DBSessionService.findById(credentialsId);
 
-        Connection conn = connectorService.getConnection(credentials);
+        Connection conn = connectorService.getConnection(DBSession);
 
         Map<String, Object> analyzedResultSet = analyzerService.analyzeResultSet(conn.prepareStatement(sql).executeQuery());
 
@@ -45,9 +45,9 @@ public class SQLServiceImpl implements SQLService {
 
     @Override
     public void runScript(String credentialsId, MultipartFile multipartFile) throws IOException, SQLException {
-        Credentials credentials = credentialsService.findById(credentialsId);
+        DBSession DBSession = DBSessionService.findById(credentialsId);
 
-        Connection conn = connectorService.getConnection(credentials);
+        Connection conn = connectorService.getConnection(DBSession);
 
         logger.debug("Set autocommit to false");
         conn.setAutoCommit(false);

@@ -1,6 +1,7 @@
-package ch.medusa.sqlapi.domain.credentials;
+package ch.medusa.sqlapi.domain.dbsession;
 
 import ch.medusa.sqlapi.config.validation.Driver;
+import ch.medusa.sqlapi.domain.user.User;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -10,7 +11,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "credentials")
-public class Credentials {
+public class DBSession {
 
     @Id
     @GeneratedValue(generator = "system-uuid")
@@ -29,13 +30,17 @@ public class Credentials {
     private Integer port;
 
     @NotBlank
-    private String user;
+    private String username;
 
     @NotBlank
     private String password;
 
     @Column(name = "database_name")
     private String database;
+
+    @ManyToOne
+    @JoinColumn(name = "users_id")
+    private User user;
 
     public String getId() {
         return id;
@@ -69,12 +74,12 @@ public class Credentials {
         this.port = port;
     }
 
-    public String getUser() {
-        return user;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -91,5 +96,14 @@ public class Credentials {
 
     public void setDatabase(String database) {
         this.database = database;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public DBSession setUser(User user) {
+        this.user = user;
+        return this;
     }
 }

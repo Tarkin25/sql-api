@@ -1,6 +1,6 @@
 package ch.medusa.sqlapi.domain.sql;
 
-import ch.medusa.sqlapi.domain.credentials.Credentials;
+import ch.medusa.sqlapi.domain.dbsession.DBSession;
 import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
@@ -11,15 +11,15 @@ import java.util.Properties;
 @Service
 public class ConnectorService {
 
-    public Connection getConnection(Credentials credentials) throws SQLException {
+    public Connection getConnection(DBSession DBSession) throws SQLException {
         Properties props = new Properties();
-        props.put("user", credentials.getUser());
-        props.put("password", credentials.getPassword());
+        props.put("user", DBSession.getUsername());
+        props.put("password", DBSession.getPassword());
 
-        return DriverManager.getConnection(jdbcUrl(credentials), props);
+        return DriverManager.getConnection(jdbcUrl(DBSession), props);
     }
 
-    private String jdbcUrl(Credentials c) {
+    private String jdbcUrl(DBSession c) {
         String database = c.getDatabase();
 
         if(database != null) {
