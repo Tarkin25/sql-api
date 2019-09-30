@@ -2,6 +2,7 @@ package ch.medusa.sqlapi.domain.user;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -26,7 +27,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findAuthenticatedUser() {
-        return null;
+        return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
 
     @Override

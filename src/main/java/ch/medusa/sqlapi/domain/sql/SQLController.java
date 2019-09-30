@@ -23,7 +23,7 @@ public class SQLController {
 
     @PostMapping("/query")
     public ResponseEntity<Map<String, Object>> executeQuery(
-            @RequestHeader("Credentials") String credentialsId,
+            @RequestHeader("DB-Session") String credentialsId,
             @RequestBody String query
     ) throws SQLException {
         return new ResponseEntity<>(sqlService.executeQuery(credentialsId, query), HttpStatus.OK);
@@ -31,7 +31,7 @@ public class SQLController {
 
     @PostMapping("/script")
     public ResponseEntity<Void> runScript(
-            @RequestHeader("Credentials") String credentialsId,
+            @RequestHeader("DB-Session") String credentialsId,
             @RequestParam("script") MultipartFile script
             ) throws IOException, SQLException {
         sqlService.runScript(credentialsId, script);

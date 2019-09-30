@@ -3,6 +3,7 @@ package ch.medusa.sqlapi.domain.sql;
 import ch.medusa.sqlapi.domain.dbsession.DBSession;
 import ch.medusa.sqlapi.domain.dbsession.DBSessionService;
 import ch.medusa.sqlapi.domain.resultanalysis.ResultAnalyzerService;
+import ch.medusa.sqlapi.domain.user.UserService;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,18 +22,20 @@ public class SQLServiceImpl implements SQLService {
     private ResultAnalyzerService analyzerService;
     private Logger logger;
     private DBSessionService DBSessionService;
+    private UserService userService;
 
     @Autowired
-    public SQLServiceImpl(ConnectorService connectorService, ResultAnalyzerService analyzerService, Logger logger, DBSessionService DBSessionService) {
+    public SQLServiceImpl(ConnectorService connectorService, ResultAnalyzerService analyzerService, Logger logger, DBSessionService DBSessionService, UserService userService) {
         this.connectorService = connectorService;
         this.analyzerService = analyzerService;
         this.logger = logger;
         this.DBSessionService = DBSessionService;
+        this.userService = userService;
     }
 
     @Override
     public Map<String, Object> executeQuery(String credentialsId, String sql) throws SQLException {
-        DBSession DBSession = DBSessionService.findById(credentialsId);
+        DBSession DBSession = DBSessionService.findById(credentialsId, userService.findAuthenticatedUser());
 
         Connection conn = connectorService.getConnection(DBSession);
 
@@ -45,7 +48,7 @@ public class SQLServiceImpl implements SQLService {
 
     @Override
     public void runScript(String credentialsId, MultipartFile multipartFile) throws IOException, SQLException {
-        DBSession DBSession = DBSessionService.findById(credentialsId);
+        DBSession DBSession = DBSessionService.findById(credentialsId, userService.findAuthenticatedUser());
 
         Connection conn = connectorService.getConnection(DBSession);
 

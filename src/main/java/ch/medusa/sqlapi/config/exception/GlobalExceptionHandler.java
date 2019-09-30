@@ -1,4 +1,4 @@
-package ch.medusa.sqlapi.config;
+package ch.medusa.sqlapi.config.exception;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +39,11 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(NoSuchElementException.class)
     public ResponseEntity<Void> noSuchElementException(NoSuchElementException e) {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(PermissionDeniedException.class)
+    public ResponseEntity<Void> permissionDeniedException(PermissionDeniedException e) {
+        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
 
 }

@@ -1,17 +1,20 @@
 package ch.medusa.sqlapi.config;
 
-import ch.medusa.sqlapi.SqlApiApplication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.InjectionPoint;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 
 @Configuration
 public class LoggerConfiguration {
 
     @Bean
-    public Logger logger() {
-        return LoggerFactory.getLogger(SqlApiApplication.class);
+    @Scope("prototype")
+    public Logger logger(InjectionPoint injectionPoint) {
+        return LoggerFactory.getLogger(injectionPoint.getMethodParameter().getContainingClass());
     }
 
 }
