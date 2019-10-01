@@ -42,8 +42,13 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(PermissionDeniedException.class)
-    public ResponseEntity<Void> permissionDeniedException(PermissionDeniedException e) {
-        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+    public ResponseEntity<String> permissionDeniedException(PermissionDeniedException e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.FORBIDDEN);
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<String> illegalArgumentException(IllegalArgumentException e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
 }
