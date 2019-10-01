@@ -46,56 +46,63 @@ public class DBSession {
         return id;
     }
 
-    public void setId(String id) {
+    public DBSession setId(String id) {
         this.id = id;
+        return this;
     }
 
     public String getDatabaseManagementSystem() {
         return databaseManagementSystem;
     }
 
-    public void setDatabaseManagementSystem(String databaseManagementSystem) {
+    public DBSession setDatabaseManagementSystem(String databaseManagementSystem) {
         this.databaseManagementSystem = databaseManagementSystem;
+        return this;
     }
 
     public String getHostname() {
         return hostname;
     }
 
-    public void setHostname(String hostname) {
+    public DBSession setHostname(String hostname) {
         this.hostname = hostname;
+        return this;
     }
 
     public Integer getPort() {
         return port;
     }
 
-    public void setPort(Integer port) {
+    public DBSession setPort(Integer port) {
         this.port = port;
+        return this;
     }
 
     public String getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
+    public DBSession setUsername(String username) {
         this.username = username;
+        return this;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public DBSession setPassword(String password) {
         this.password = password;
+        return this;
     }
 
     public String getDatabase() {
         return database;
     }
 
-    public void setDatabase(String database) {
+    public DBSession setDatabase(String database) {
         this.database = database;
+        return this;
     }
 
     public User getUser() {
