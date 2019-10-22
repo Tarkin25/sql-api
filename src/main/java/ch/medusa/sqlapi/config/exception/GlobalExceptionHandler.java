@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
@@ -22,13 +24,29 @@ public class GlobalExceptionHandler {
         this.logger = logger;
     }
 
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<Map<String, Object>> exception(Exception e) {
+        logger.debug("Exception occurred: ", e);
+        logger.debug("Exception message was sent to the client");
+
+        Map<String, Object> map = new LinkedHashMap<>();
+
+
+        map.put("timestamp", LocalDateTime.now().format(DateTimeFormatter.ISO_DATE));
+        map.put("message", e.getMessage());
+
+        return new ResponseEntity<>(map, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
     @ExceptionHandler(SQLException.class)
-    public ResponseEntity<Object> sqlException(SQLException e) {
+    public ResponseEntity<Map<String, Object>> sqlException(SQLException e) {
         logger.debug("SQLException occurred: ", e);
         logger.debug("Exception message was sent to the client");
 
         Map<String, Object> map = new LinkedHashMap<>();
 
+
+        map.put("timestamp", LocalDateTime.now().format(DateTimeFormatter.ISO_DATE));
         map.put("error_code", e.getErrorCode());
         map.put("sql_state", e.getSQLState());
         map.put("message", e.getMessage());

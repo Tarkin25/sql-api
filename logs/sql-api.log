@@ -1,0 +1,4 @@
+[22.10.2019 13:12] INFO  Starting SqlApiApplication on Laptop-Severin.local with PID 1197 (/Volumes/Samsung_T5/Projects/Java/sql-api/build/classes/java/main started by Severin in /Volumes/Samsung_T5/Projects/Java/sql-api)
+[22.10.2019 13:12] DEBUG Running with Spring Boot v2.1.7.RELEASE, Spring v5.1.9.RELEASE
+[22.10.2019 13:12] INFO  No active profile set, falling back to default profiles: default
+[22.10.2019 13:12] INFO  Started SqlApiApplication in 8.534 seconds (JVM running for 9.323)
