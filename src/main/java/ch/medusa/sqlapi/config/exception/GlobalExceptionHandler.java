@@ -31,7 +31,6 @@ public class GlobalExceptionHandler {
 
         Map<String, Object> map = new LinkedHashMap<>();
 
-
         map.put("timestamp", LocalDateTime.now().format(DateTimeFormatter.ISO_DATE));
         map.put("message", e.getMessage());
 
@@ -44,7 +43,6 @@ public class GlobalExceptionHandler {
         logger.debug("Exception message was sent to the client");
 
         Map<String, Object> map = new LinkedHashMap<>();
-
 
         map.put("timestamp", LocalDateTime.now().format(DateTimeFormatter.ISO_DATE));
         map.put("error_code", e.getErrorCode());
