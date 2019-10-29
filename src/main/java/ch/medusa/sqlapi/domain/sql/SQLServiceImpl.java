@@ -76,6 +76,8 @@ public class SQLServiceImpl implements SQLService {
             logger.debug("Throwing the Exception");
             throw e;
         }
+
+        conn.close();
     }
 
     private List<String> parseStatements(String query) {
