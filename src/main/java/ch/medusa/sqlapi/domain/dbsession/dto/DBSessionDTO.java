@@ -1,13 +1,33 @@
 package ch.medusa.sqlapi.domain.dbsession.dto;
 
+import ch.medusa.sqlapi.config.validation.Driver;
+
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 public class DBSessionDTO {
 
     private String id;
+
+    @NotBlank
+    private String name;
+
+    @NotNull @Driver
     private String databaseManagementSystem;
+
+    @NotBlank
     private String hostname;
+
+    @Min(0)
     private Integer port;
+
+    @NotBlank
     private String username;
+
+    @NotBlank
     private String password;
+
     private String database;
 
     public String getId() {
@@ -16,6 +36,15 @@ public class DBSessionDTO {
 
     public DBSessionDTO setId(String id) {
         this.id = id;
+        return this;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public DBSessionDTO setName(String name) {
+        this.name = name;
         return this;
     }
 

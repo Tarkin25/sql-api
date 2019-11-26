@@ -18,6 +18,9 @@ public class DBSession {
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String id;
 
+    @NotBlank
+    private String name;
+
     @Driver
     @NotNull
     @Column(name = "database_management_system")
@@ -48,6 +51,15 @@ public class DBSession {
 
     public DBSession setId(String id) {
         this.id = id;
+        return this;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public DBSession setName(String name) {
+        this.name = name;
         return this;
     }
 
