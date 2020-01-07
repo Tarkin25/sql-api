@@ -37,6 +37,8 @@ public class SQLServiceImpl implements SQLService {
     public Map<String, Object> executeQuery(String credentialsId, String sql) throws SQLException {
         DBSession DBSession = DBSessionService.findById(credentialsId, userService.findAuthenticatedUser());
 
+        logger.debug("query: {}", sql);
+
         Connection conn = connectorService.getConnection(DBSession);
 
         Map<String, Object> analyzedResultSet = analyzerService.analyzeResultSet(conn.prepareStatement(sql).executeQuery());

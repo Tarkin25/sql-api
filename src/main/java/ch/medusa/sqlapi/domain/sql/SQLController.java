@@ -24,9 +24,9 @@ public class SQLController {
     @PostMapping("/query")
     public ResponseEntity<Map<String, Object>> executeQuery(
             @RequestHeader("DB-Session") String credentialsId,
-            @RequestBody String query
+            @RequestBody QueryRequest queryRequest
     ) throws SQLException {
-        return new ResponseEntity<>(sqlService.executeQuery(credentialsId, query), HttpStatus.OK);
+        return new ResponseEntity<>(sqlService.executeQuery(credentialsId, queryRequest.getQuery()), HttpStatus.OK);
     }
 
     @PostMapping("/script")
