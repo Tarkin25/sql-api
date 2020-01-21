@@ -1,0 +1,13 @@
+version: "3.4"
+
+services:
+  mariadb:
+    image: mariadb
+    container_name: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: sql_api
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    ports:
+    - 3306:3306
